@@ -7,6 +7,11 @@ html {
   font-family: 'Josefin Slab', serif;
 }
 
+.link {
+  text-decoration: none;
+  color: black;
+}
+
 /* HEADER */
 
 .header {
@@ -17,12 +22,15 @@ html {
   grid-template-areas: 'one two three';
 }
 
-.header__title {
+.header__link {
   grid-area: one;
+  margin-right: auto;
+}
+
+.header__title {
   margin: 10px;
   font-size: 20px;
   font-weight: 600;
-  margin-right: auto;
 }
 
 .header__searchBar {
