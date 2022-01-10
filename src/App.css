@@ -1,5 +1,5 @@
 html {
-  max-width: 1465px;
+  max-width: 100%;
 }
 
 .App {
@@ -18,7 +18,7 @@ html {
   border: 1px solid rgb(255, 0, 0);
   background-color: rgba(255, 0, 0, 0.1);
   display: grid;
-  grid-template-columns: 430px 605px 430px;
+  grid-template-columns: 25% 50% 25%;
   grid-template-areas: 'one two three';
 }
 
@@ -69,4 +69,14 @@ html {
   list-style-type: none;
   display: inline;
   padding: 0px 25px;
+}
+
+.reviews__list {
+  padding-left: 0;
+}
+
+.reviewCard {
+  margin: 20px 0px;
+  border: 1px solid rgb(255, 0, 255);
+  background-color: rgba(255, 0, 255, 0.1);
 }

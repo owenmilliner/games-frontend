@@ -13,8 +13,7 @@ const Reviews = () => {
   return (
     <div className='reviews'>
       <CategoryList />
-      <p>Reviews!</p>
-      <ul>
+      <ul className='reviews__list'>
         {reviewsData.map((review) => (
           <ReviewCard key={review.review_id} review={review} />
         ))}
