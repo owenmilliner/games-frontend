@@ -2,8 +2,24 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div>
-      <p>Hello!</p>
+    <div className='header'>
+      <h1 className='header__title'>Game Ratings</h1>
+      <div className='header__searchBar'>
+        <form>
+          <label htmlFor='search'>
+            <img
+              className='searchBar__image searchBar__element'
+              src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/1024px-Magnifying_glass_icon.svg.png'
+            />
+          </label>
+          <input
+            id='search'
+            className='searchBar__input searchBar__element'
+            type='text'
+            placeholder='Search'
+          ></input>
+        </form>
+      </div>
     </div>
   );
 };

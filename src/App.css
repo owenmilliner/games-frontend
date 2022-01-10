@@ -1,3 +1,53 @@
+html {
+  max-width: 1465px;
+}
+
 .App {
   text-align: center;
+  font-family: 'Josefin Slab', serif;
+}
+
+/* HEADER */
+
+.header {
+  border: 1px solid rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 430px 605px 430px;
+  grid-template-areas: 'one two three';
+}
+
+.header__title {
+  grid-area: one;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: auto;
+}
+
+.header__searchBar {
+  grid-area: two;
+  margin: auto;
+}
+
+.searchBar__image {
+  width: 10px;
+  padding-right: 5px;
+}
+
+.searchBar__input {
+  width: 500px;
+}
+
+.searchBar__element {
+  display: inline;
+}
+
+/* END-HEADER */
+
+/* REVIEWS */
+
+.reviews {
+  border: 1px solid rgb(0, 255, 0);
+  background-color: rgba(0, 255, 0, 0.1);
 }

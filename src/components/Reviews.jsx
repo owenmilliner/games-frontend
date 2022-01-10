@@ -2,8 +2,8 @@ import React from 'react';
 
 const Reviews = () => {
   return (
-    <div>
-      <p>Hello!</p>
+    <div className='reviews'>
+      <p>Reviews!</p>
     </div>
   );
 };
