@@ -15,8 +15,8 @@ html {
 /* HEADER */
 
 .header {
-  border: 1px solid rgb(255, 0, 0);
-  background-color: rgba(255, 0, 0, 0.1);
+  /* https://coolors.co/355070-6d597a-b56576-e56b6f-eaac8b */
+  background-color: #6d597a;
   display: grid;
   grid-template-columns: 25% 50% 25%;
   grid-template-areas: 'one two three';
@@ -25,6 +25,7 @@ html {
 .header__link {
   grid-area: one;
   margin-right: auto;
+  color: white;
 }
 
 .header__title {
@@ -79,4 +80,8 @@ html {
   margin: 20px 0px;
   border: 1px solid rgb(255, 0, 255);
   background-color: rgba(255, 0, 255, 0.1);
+}
+
+.reviewCard__image {
+  max-width: 200px;
 }

@@ -21,6 +21,7 @@ const ReviewCard = ({ review }) => {
       <p>{review.votes}</p>
       <button>comments</button>
       <p>{review.comment_count}</p>
+      <img className='reviewCard__image' src={review.review_img_url}></img>
     </div>
   );
 };
