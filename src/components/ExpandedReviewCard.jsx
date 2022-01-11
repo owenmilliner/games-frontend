@@ -3,7 +3,7 @@ import React from 'react';
 const ExpandedReviewCard = () => {
   return (
     <div>
-      <p>Hello!</p>
+      <p>ExpandedReviewCard!</p>
     </div>
   );
 };

@@ -46,6 +46,7 @@ html {
 
 .searchBar__input {
   width: 500px;
+  cursor: not-allowed;
 }
 
 .searchBar__element {
@@ -57,13 +58,9 @@ html {
 /* REVIEWS */
 
 .reviews {
-  /* border: 1px solid rgb(0, 255, 0);
-  background-color: rgba(0, 255, 0, 0.1); */
 }
 
 .categories {
-  /* border: 1px solid rgb(0, 0, 255);
-  background-color: rgba(0, 0, 255, 0.1); */
 }
 
 .categories__list {
@@ -75,6 +72,7 @@ html {
   display: inline;
   padding: 0px 25px;
   color: black;
+  cursor: pointer;
 }
 
 .categories__list__element--state-active {
@@ -83,6 +81,7 @@ html {
   padding: 0px 25px;
   color: #f79d65;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .reviews__list {
@@ -97,11 +96,22 @@ html {
   border-radius: 8px;
   display: grid;
   grid-template-areas:
-    'info info info info info image'
-    'title title title title title image'
+    'link link link link link image'
+    'link link link link link image'
     'vButton vCount cButton cCount fill image';
   grid-template-columns: 80px 40px 80px 40px auto 265px;
   grid-template-rows: 40px 120px 40px;
+  overflow: hidden;
+}
+
+.reviewCard__link {
+  grid-area: link;
+  display: grid;
+  grid-template-areas:
+    'info'
+    'title';
+  grid-template-columns: 100%;
+  grid-template-rows: 20% 80%;
   overflow: hidden;
 }
 
@@ -109,13 +119,6 @@ html {
   margin-right: auto;
   margin-left: 15px;
   grid-area: info;
-}
-
-.reviewCard__image {
-  grid-area: image;
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
 }
 
 .reviewCard__title {
@@ -126,6 +129,16 @@ html {
   text-align: left;
 }
 
+.reviewCard__image__link {
+  grid-area: image;
+}
+
+.reviewCard__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
 button {
   background-color: #6d597a;
   border: none;
@@ -133,6 +146,7 @@ button {
   text-align: center;
   text-decoration: none;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .reviewCard__voteButton--voted-false {
@@ -157,6 +171,7 @@ button {
 .reviewCard__commentButton {
   grid-area: cButton;
   margin-bottom: 15px;
+  cursor: not-allowed;
 }
 .reviewCard__commentCount {
   grid-area: cCount;
@@ -164,3 +179,5 @@ button {
   margin: 0;
   margin-bottom: 15px;
 }
+
+/* END REVIEWS */

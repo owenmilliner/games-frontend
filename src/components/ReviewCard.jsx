@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { patchReviewById } from '../utils/api';
+import { Link } from 'react-router-dom';
 
 const ReviewCard = ({ review }) => {
   const [voteCount, setVoteCount] = useState(0);
@@ -38,22 +39,18 @@ const ReviewCard = ({ review }) => {
   useEffect(() => setVoteCount(review.votes), []);
 
   return (
-    /*
-      "owner": "cooljmessy",
-      "title": "Velit tempor ullamco amet ipsum dolor voluptate.",
-      "review_id": 14,
-      "category": "hidden-roles",
-      "review_img_url": "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg",
-      "created_at": "2021-02-05T00:00:00.000Z",
-      "votes": 3,
-      "comment_count": "0"
-    */
     <div className='reviewCard'>
-      <p className='reviewCard__info'>
-        <strong>{review.category}</strong> posted by{' '}
-        <strong>{review.owner}</strong> at <strong>{review.created_at}</strong>
-      </p>
-      <h2 className='reviewCard__title'>{review.title}</h2>
+      <Link
+        to={`/reviews/${review.review_id}`}
+        className='link reviewCard__link'
+      >
+        <p className='reviewCard__info'>
+          <strong>{review.category}</strong> posted by{' '}
+          <strong>{review.owner}</strong> on{' '}
+          <strong>{review.created_at.slice(0, 10)}</strong>
+        </p>
+        <h2 className='reviewCard__title'>{review.title}</h2>
+      </Link>
       <button
         className='reviewCard__voteButton--voted-false'
         onClick={handleVote}
@@ -63,11 +60,16 @@ const ReviewCard = ({ review }) => {
       <p className='reviewCard__voteCounter'>{voteCount}</p>
       <button className='reviewCard__commentButton'>comments</button>
       <p className='reviewCard__commentCount'>{review.comment_count}</p>
-      <img
-        className='reviewCard__image'
-        src={review.review_img_url}
-        alt='Review Thumbnail'
-      />
+      <Link
+        to={`/reviews/${review.review_id}`}
+        className='reviewCard__image__link'
+      >
+        <img
+          className='reviewCard__image'
+          src={review.review_img_url}
+          alt='Review Thumbnail'
+        />
+      </Link>
     </div>
   );
 };
