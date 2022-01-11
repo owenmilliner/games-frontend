@@ -1,42 +1,12 @@
 import { useState, useEffect } from 'react';
-import { patchReviewById } from '../utils/api';
 import { Link } from 'react-router-dom';
+import { handleVote } from '../utils/utils';
 
 const ReviewCard = ({ review }) => {
   const [voteCount, setVoteCount] = useState(0);
   const [voted, setVoted] = useState(false);
 
-  const handleVote = () => {
-    if (!voted) {
-      setVoteCount(voteCount + 1);
-      const voteButton = document.getElementsByClassName(
-        'reviewCard__voteButton--voted-false'
-      )[0];
-
-      voteButton.innerHTML = 'voted!';
-      voteButton.className = 'reviewCard__voteButton--voted-true';
-
-      patchReviewById(review, true)
-        .then()
-        .catch((error) => console.log(error));
-      setVoted(true);
-    } else {
-      setVoteCount(voteCount - 1);
-      const voteButton = document.getElementsByClassName(
-        'reviewCard__voteButton--voted-true'
-      )[0];
-
-      voteButton.innerHTML = 'vote';
-      voteButton.className = 'reviewCard__voteButton--voted-false';
-
-      patchReviewById(review, false)
-        .then()
-        .catch((error) => console.log(error));
-      setVoted(false);
-    }
-  };
-
-  useEffect(() => setVoteCount(review.votes), []);
+  useEffect(() => setVoteCount(review.votes), [review.votes]);
 
   return (
     <div className='reviewCard'>
@@ -53,7 +23,11 @@ const ReviewCard = ({ review }) => {
       </Link>
       <button
         className='reviewCard__voteButton--voted-false'
-        onClick={handleVote}
+        onClick={() => {
+          setVoted(
+            handleVote(review.review_id, voted, voteCount, setVoteCount)
+          );
+        }}
       >
         vote
       </button>

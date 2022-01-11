@@ -20,9 +20,16 @@ export const getCategories = () => {
     .catch((error) => console.log(error));
 };
 
-export const patchReviewById = (review, increase) => {
+export const patchReviewById = (review_id, increase) => {
   return gamesApi
-    .patch(`/reviews/${review.review_id}`, { inc_votes: increase ? 1 : -1 })
+    .patch(`/reviews/${review_id}`, { inc_votes: increase ? 1 : -1 })
     .then((response) => response.data.categories)
+    .catch((error) => console.log(error));
+};
+
+export const getReviewById = (review_id) => {
+  return gamesApi
+    .get(`/reviews/${review_id}`)
+    .then((response) => response.data.review)
     .catch((error) => console.log(error));
 };

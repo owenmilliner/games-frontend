@@ -1,9 +1,8 @@
-import React from 'react';
 import ExpandedReviewCard from './ExpandedReviewCard';
 
 const ExpandedReview = () => {
   return (
-    <div>
+    <div className='expandedReview'>
       <p>ExpandedReview!</p>
       <ExpandedReviewCard />
     </div>
