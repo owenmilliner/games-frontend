@@ -13,6 +13,7 @@ const Header = () => {
             <img
               className='searchBar__image searchBar__element'
               src='https://www.seekpng.com/png/full/920-9209972_magnifying-glass-png-white-search-icon-white-png.png'
+              alt='Search Icon'
             />
           </label>
           <input

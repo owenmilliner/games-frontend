@@ -14,14 +14,19 @@ const ReviewCard = ({ review }) => {
     */
     <div className='reviewCard'>
       <p>
-        {review.category} posted by {review.owner} at {review.created_at}
+        <strong>{review.category}</strong> posted by{' '}
+        <strong>{review.owner}</strong> at <strong>{review.created_at}</strong>
       </p>
       <h2>{review.title}</h2>
       <button>vote</button>
       <p>{review.votes}</p>
       <button>comments</button>
       <p>{review.comment_count}</p>
-      <img className='reviewCard__image' src={review.review_img_url}></img>
+      <img
+        className='reviewCard__image'
+        src={review.review_img_url}
+        alt='Review Thumbnail'
+      />
     </div>
   );
 };
