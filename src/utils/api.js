@@ -19,3 +19,10 @@ export const getCategories = () => {
     .then((response) => response.data.categories)
     .catch((error) => console.log(error));
 };
+
+export const patchReviewById = (review) => {
+  return gamesApi
+    .patch(`/reviews/${review.review_id}`, { inc_votes: 1 })
+    .then((response) => response.data.categories)
+    .catch((error) => console.log(error));
+};

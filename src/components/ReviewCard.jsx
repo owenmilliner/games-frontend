@@ -1,6 +1,16 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { patchReviewById } from '../utils/api';
 
 const ReviewCard = ({ review }) => {
+  const [voteCount, setVoteCount] = useState(0);
+
+  const handleVote = () => {
+    setVoteCount(voteCount + 1);
+    patchReviewById(review).then((result) => {});
+  };
+
+  useEffect(() => setVoteCount(review.votes), []);
+
   return (
     /*
       "owner": "cooljmessy",
@@ -18,8 +28,8 @@ const ReviewCard = ({ review }) => {
         <strong>{review.owner}</strong> at <strong>{review.created_at}</strong>
       </p>
       <h2>{review.title}</h2>
-      <button>vote</button>
-      <p>{review.votes}</p>
+      <button onClick={handleVote}>vote</button>
+      <p>{voteCount}</p>
       <button>comments</button>
       <p>{review.comment_count}</p>
       <img
