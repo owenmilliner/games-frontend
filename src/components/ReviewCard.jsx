@@ -8,12 +8,26 @@ const ReviewCard = ({ review }) => {
   const handleVote = () => {
     if (!voted) {
       setVoteCount(voteCount + 1);
+      const voteButton = document.getElementsByClassName(
+        'reviewCard__voteButton--voted-false'
+      )[0];
+
+      voteButton.innerHTML = 'voted!';
+      voteButton.className = 'reviewCard__voteButton--voted-true';
+
       patchReviewById(review, true)
         .then()
         .catch((error) => console.log(error));
       setVoted(true);
     } else {
       setVoteCount(voteCount - 1);
+      const voteButton = document.getElementsByClassName(
+        'reviewCard__voteButton--voted-true'
+      )[0];
+
+      voteButton.innerHTML = 'vote';
+      voteButton.className = 'reviewCard__voteButton--voted-false';
+
       patchReviewById(review, false)
         .then()
         .catch((error) => console.log(error));
@@ -40,7 +54,10 @@ const ReviewCard = ({ review }) => {
         <strong>{review.owner}</strong> at <strong>{review.created_at}</strong>
       </p>
       <h2 className='reviewCard__title'>{review.title}</h2>
-      <button className='reviewCard__voteButton' onClick={handleVote}>
+      <button
+        className='reviewCard__voteButton--voted-false'
+        onClick={handleVote}
+      >
         vote
       </button>
       <p className='reviewCard__voteCounter'>{voteCount}</p>

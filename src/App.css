@@ -126,15 +126,41 @@ html {
   text-align: left;
 }
 
-.reviewCard__voteButton {
-  grid-area: vButton;
+button {
+  background-color: #6d597a;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
 }
+
+.reviewCard__voteButton--voted-false {
+  grid-area: vButton;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.reviewCard__voteButton--voted-true {
+  grid-area: vButton;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  background-color: #f79d65;
+}
+
 .reviewCard__voteCounter {
   grid-area: vCount;
+  padding-top: 5px;
+  margin: 0;
+  margin-bottom: 15px;
 }
 .reviewCard__commentButton {
   grid-area: cButton;
+  margin-bottom: 15px;
 }
 .reviewCard__commentCount {
   grid-area: cCount;
+  padding-top: 5px;
+  margin: 0;
+  margin-bottom: 15px;
 }
