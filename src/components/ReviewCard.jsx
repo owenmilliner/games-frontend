@@ -3,10 +3,22 @@ import { patchReviewById } from '../utils/api';
 
 const ReviewCard = ({ review }) => {
   const [voteCount, setVoteCount] = useState(0);
+  const [voted, setVoted] = useState(false);
 
   const handleVote = () => {
-    setVoteCount(voteCount + 1);
-    patchReviewById(review).then((result) => {});
+    if (!voted) {
+      setVoteCount(voteCount + 1);
+      patchReviewById(review, true)
+        .then()
+        .catch((error) => console.log(error));
+      setVoted(true);
+    } else {
+      setVoteCount(voteCount - 1);
+      patchReviewById(review, false)
+        .then()
+        .catch((error) => console.log(error));
+      setVoted(false);
+    }
   };
 
   useEffect(() => setVoteCount(review.votes), []);
