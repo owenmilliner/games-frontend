@@ -8,7 +8,6 @@ const Reviews = () => {
   const [categoryFilter, setCategoryFilter] = useState('all');
 
   useEffect(() => {
-    console.log('New effect: ', categoryFilter);
     getReviews({ category: categoryFilter }).then((result) => {
       setReviewsData(result);
     });

@@ -5,9 +5,6 @@ const gamesApi = axios.create({
 });
 
 export const getReviews = (query) => {
-  console.log(
-    `/reviews${query.category !== 'all' ? `?category=${query.category}` : ''}`
-  );
   return gamesApi
     .get(
       `/reviews${query.category !== 'all' ? `?category=${query.category}` : ''}`

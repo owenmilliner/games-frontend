@@ -57,19 +57,28 @@ html {
 /* REVIEWS */
 
 .reviews {
-  border: 1px solid rgb(0, 255, 0);
-  background-color: rgba(0, 255, 0, 0.1);
+  /* border: 1px solid rgb(0, 255, 0);
+  background-color: rgba(0, 255, 0, 0.1); */
 }
 
 .categories {
-  border: 1px solid rgb(0, 0, 255);
-  background-color: rgba(0, 0, 255, 0.1);
+  /* border: 1px solid rgb(0, 0, 255);
+  background-color: rgba(0, 0, 255, 0.1); */
 }
 
-.categories__list__element {
+.categories__list__element--state-inactive {
   list-style-type: none;
   display: inline;
   padding: 0px 25px;
+  color: black;
+}
+
+.categories__list__element--state-active {
+  list-style-type: none;
+  display: inline;
+  padding: 0px 25px;
+  color: #f79d65;
+  font-weight: bold;
 }
 
 .reviews__list {

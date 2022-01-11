@@ -8,15 +8,24 @@ const CategoryList = ({ setCategoryFilter }) => {
     getCategories().then((result) => setCategoryData(result));
   }, []);
 
-  const handleCategoryFiltering = (newCategory) =>
+  const handleCategoryFiltering = (newCategory) => {
     setCategoryFilter(newCategory);
+
+    document.getElementsByClassName(
+      'categories__list__element--state-active'
+    )[0].className = 'categories__list__element--state-inactive';
+
+    document.getElementById(`category__${newCategory}`).className =
+      'categories__list__element--state-active';
+  };
 
   return (
     <div className='categories'>
       <ul className='categories__list'>
         <li
           key={'all'}
-          className='categories__list__element'
+          id={'category__all'}
+          className='categories__list__element--state-active'
           onClick={() => handleCategoryFiltering('all')}
         >
           all
@@ -24,7 +33,8 @@ const CategoryList = ({ setCategoryFilter }) => {
         {categoryData.map((category) => (
           <li
             key={category.slug}
-            className='categories__list__element'
+            id={`category__${category.slug}`}
+            className='categories__list__element--state-inactive'
             onClick={() => handleCategoryFiltering(category.slug)}
           >
             {category.slug}
