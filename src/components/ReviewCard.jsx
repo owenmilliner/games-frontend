@@ -35,15 +35,17 @@ const ReviewCard = ({ review }) => {
       "comment_count": "0"
     */
     <div className='reviewCard'>
-      <p>
+      <p className='reviewCard__info'>
         <strong>{review.category}</strong> posted by{' '}
         <strong>{review.owner}</strong> at <strong>{review.created_at}</strong>
       </p>
-      <h2>{review.title}</h2>
-      <button onClick={handleVote}>vote</button>
-      <p>{voteCount}</p>
-      <button>comments</button>
-      <p>{review.comment_count}</p>
+      <h2 className='reviewCard__title'>{review.title}</h2>
+      <button className='reviewCard__voteButton' onClick={handleVote}>
+        vote
+      </button>
+      <p className='reviewCard__voteCounter'>{voteCount}</p>
+      <button className='reviewCard__commentButton'>comments</button>
+      <p className='reviewCard__commentCount'>{review.comment_count}</p>
       <img
         className='reviewCard__image'
         src={review.review_img_url}
