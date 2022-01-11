@@ -5,33 +5,20 @@ import CategoryList from './CategoryList';
 
 const Reviews = () => {
   const [reviewsData, setReviewsData] = useState([]);
-  const [filteredReviewsData, setFilteredReviewsData] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('all');
 
   useEffect(() => {
-    getReviews().then((result) => {
+    console.log('New effect: ', categoryFilter);
+    getReviews({ category: categoryFilter }).then((result) => {
       setReviewsData(result);
-      setFilteredReviewsData(result);
     });
-  }, []);
-
-  useEffect(() => {
-    if (categoryFilter !== 'all') {
-      setFilteredReviewsData(() => {
-        return reviewsData.filter((review) => {
-          return review.category === categoryFilter;
-        });
-      });
-    } else {
-      setFilteredReviewsData(reviewsData);
-    }
   }, [categoryFilter]);
 
   return (
     <div className='reviews'>
       <CategoryList setCategoryFilter={setCategoryFilter} />
       <ul className='reviews__list'>
-        {filteredReviewsData.map((review) => (
+        {reviewsData.map((review) => (
           <ReviewCard key={review.review_id} review={review} />
         ))}
       </ul>

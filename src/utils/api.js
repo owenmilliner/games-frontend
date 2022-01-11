@@ -4,9 +4,14 @@ const gamesApi = axios.create({
   baseURL: 'https://owen-games-api.herokuapp.com/api/',
 });
 
-export const getReviews = () => {
+export const getReviews = (query) => {
+  console.log(
+    `/reviews${query.category !== 'all' ? `?category=${query.category}` : ''}`
+  );
   return gamesApi
-    .get('/reviews')
+    .get(
+      `/reviews${query.category !== 'all' ? `?category=${query.category}` : ''}`
+    )
     .then((response) => response.data.reviews)
     .catch((error) => console.log(error));
 };
