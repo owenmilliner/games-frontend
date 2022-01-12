@@ -184,19 +184,67 @@ button {
 
 /* EXPANDED REVIEW */
 .expandedReview {
+  text-align: left;
+  width: 800px;
+  height: 200px;
+  margin: 20px auto;
 }
 
 .expandedReviewCard {
-  border: 1px solid rgba(0, 255, 0, 1);
-  background-color: rgba(0, 255, 0, 0.2);
+  background-color: rgba(104, 73, 104, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-areas:
+    'info info info info info'
+    'title title title title title'
+    'body body body body body'
+    'voteButton voteCounter commentButton commentCounter fill';
+  grid-template-rows: 20px 40px auto 20px;
+  grid-template-columns: 40px 40px 80px 40px auto;
+  overflow: hidden;
+}
+
+.expandedReviewCard__info {
+  margin-top: 0px;
+  grid-area: info;
+}
+
+.expandedReviewCard__title {
+  grid-area: title;
+}
+
+.expandedReviewCard__body {
+  grid-area: body;
 }
 
 .expandedReviewCard__voteButton--voted-false {
+  grid-area: voteButton;
 }
 
 .expandedReviewCard__voteButton--voted-true {
   background-color: #f79d65;
+  grid-area: voteButton;
 }
+
+.expandedReviewCard__voteCounter {
+  margin: 0;
+  margin-top: 4px;
+  text-align: center;
+  grid-area: voteCounter;
+}
+
+.expandedReviewCard__commentButton {
+  grid-area: commentButton;
+}
+
+.expandedReviewCard__commentCounter {
+  margin: 0;
+  margin-top: 4px;
+  text-align: center;
+  grid-area: commentCounter;
+}
+
 /* END EXPANDED REVIEW */
 
 /* COMMENTS */

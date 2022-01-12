@@ -47,7 +47,7 @@ const ExpandedReviewCard = ({ singleReviewData }) => {
       >
         comments
       </button>
-      <p className='expandedReviewCard__commentCount'>
+      <p className='expandedReviewCard__commentCounter'>
         {singleReviewData.comment_count}
       </p>
     </div>
