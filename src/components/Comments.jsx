@@ -1,13 +1,15 @@
 import React from 'react';
 import { getReviewCommentsById } from '../utils/api';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import CommentCard from './CommentCard';
+import { CommentContext } from '../contexts/CommentContext';
 
 const Comments = () => {
   const { review_id } = useParams();
   const [commentsData, setCommentsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { commentReference } = useContext(CommentContext);
 
   useEffect(() => {
     getReviewCommentsById(review_id)
@@ -23,7 +25,7 @@ const Comments = () => {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className='comments' id='comments'>
+        <div className='comments' id='comments' ref={commentReference}>
           <ul className='comments__list'>
             {commentsData.map((comment) => (
               <CommentCard key={comment.comment_id} comment={comment} />

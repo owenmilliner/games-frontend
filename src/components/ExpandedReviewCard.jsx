@@ -1,4 +1,6 @@
 import { useVotes } from '../hooks/useVotes';
+import { CommentContext } from '../contexts/CommentContext';
+import { useContext } from 'react';
 
 const ExpandedReviewCard = ({ singleReviewData }) => {
   const { votes, handleVotes, voted } = useVotes(
@@ -6,9 +8,11 @@ const ExpandedReviewCard = ({ singleReviewData }) => {
     'review',
     singleReviewData.review_id
   );
+  const { commentReference } = useContext(CommentContext);
 
   const handleCommentsScroll = () => {
-    document.getElementById('comments').scrollIntoView();
+    console.log(commentReference);
+    commentReference.current.scrollIntoView();
   };
 
   return (

@@ -8,16 +8,8 @@ const CategoryList = ({ categoryFilter, setCategoryFilter }) => {
     getCategories().then((result) => setCategoryData(result));
   }, []);
 
-  const handleCategoryFiltering = (newCategory) => {
+  const handleCategoryFiltering = (newCategory) =>
     setCategoryFilter(newCategory);
-
-    // document.getElementsByClassName(
-    //   'categories__list__element--state-active'
-    // )[0].className = 'categories__list__element--state-inactive';
-
-    // document.getElementById(`category__${newCategory}`).className =
-    //   'categories__list__element--state-active';
-  };
 
   return (
     <div className='categories'>

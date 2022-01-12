@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CommentProvider } from './contexts/CommentContext';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <CommentProvider>
     <App />
-  </React.StrictMode>,
+  </CommentProvider>,
   document.getElementById('root')
 );
 
