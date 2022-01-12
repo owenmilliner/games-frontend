@@ -1,14 +1,9 @@
-import { useState, useEffect } from 'react';
-import { handleVote } from '../utils/utils';
-// TODO: implementation of custom hooks
-import { useCount } from '../hooks/useCount';
+import { useVotes } from '../hooks/useVotes';
 
 const CommentCard = ({ comment }) => {
-  //   const [voteCount, setVoteCount] = useState(0); //Terrible way to go about this I think - will think of alternate method later
-  //   const [voted, setVoted] = useState(false);
-  const { count, handleCount } = useCount(
+  const { count, handleCount, voted } = useVotes(
     comment.votes,
-    'commentCard',
+    'comment',
     comment.comment_id
   );
 
@@ -22,22 +17,16 @@ const CommentCard = ({ comment }) => {
       </p>
       <p className='commentCard__body'>{comment.body}</p>
       <button
-        className='commentCard__voteButton--voted-false'
+        className={
+          voted
+            ? 'commentCard__voteButton--voted-true'
+            : 'commentCard__voteButton--voted-false'
+        }
         onClick={() => {
           handleCount();
-          //   setVoted(
-          //     handleVote(
-          //       comment.comment_id,
-          //       voted,
-          //       voteCount,
-          //       setVoteCount,
-          //       'commentCard',
-          //       'comment'
-          //     ) // Help - would like to make custom hook but unsure
-          //   );
         }}
       >
-        vote
+        {voted ? 'voted!' : 'vote'}
       </button>
       <p className='commentCard__voteCounter'>{count}</p>
     </div>
