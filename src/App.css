@@ -201,7 +201,7 @@ button {
     'body body body body body'
     'voteButton voteCounter commentButton commentCounter fill';
   grid-template-rows: 20px 40px auto 20px;
-  grid-template-columns: 40px 40px 80px 40px auto;
+  grid-template-columns: 60px 40px 80px 40px auto;
   overflow: hidden;
 }
 
@@ -249,8 +249,9 @@ button {
 
 /* COMMENTS */
 .comments {
-  border: 1px solid rgba(0, 0, 255, 1);
-  background-color: rgba(0, 0, 255, 0.1);
+  margin-top: 40px;
+  /* border: 1px solid rgba(0, 0, 255, 1); */
+  /* background-color: rgba(0, 0, 255, 0.1); */
 }
 
 .comments__list {
@@ -258,15 +259,43 @@ button {
 }
 
 .commentCard {
-  border: 1px solid rgba(255, 125, 0, 1);
-  background-color: rgba(255, 125, 0, 0.3);
+  background-color: rgba(247, 157, 101, 0.2);
   margin: 10px 0px;
+  padding: 10px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-areas:
+    'info info info'
+    'body body body'
+    'voteButton voteCounter fill';
+  grid-template-rows: 20px auto 20px;
+  grid-template-columns: 60px 40px auto;
+  overflow: hidden;
+}
+
+.commentCard__info {
+  margin-top: 0px;
+  grid-area: info;
+}
+
+.commentCard__body {
+  grid-area: body;
 }
 
 .commentCard__voteButton--voted-false {
+  grid-area: voteButton;
 }
 
 .commentCard__voteButton--voted-true {
   background-color: #f79d65;
+  grid-area: voteButton;
 }
+
+.commentCard__voteCounter {
+  margin: 0;
+  margin-top: 4px;
+  text-align: center;
+  grid-area: voteCounter;
+}
+
 /* END COMMENTS */
