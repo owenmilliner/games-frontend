@@ -184,12 +184,41 @@ button {
 
 /* EXPANDED REVIEW */
 .expandedReview {
-  border: 1px solid rgba(255, 0, 0, 1);
-  background-color: rgba(255, 0, 0, 0.1);
 }
 
 .expandedReviewCard {
   border: 1px solid rgba(0, 255, 0, 1);
   background-color: rgba(0, 255, 0, 0.2);
 }
+
+.expandedReviewCard__voteButton--voted-false {
+}
+
+.expandedReviewCard__voteButton--voted-true {
+  background-color: #f79d65;
+}
 /* END EXPANDED REVIEW */
+
+/* COMMENTS */
+.comments {
+  border: 1px solid rgba(0, 0, 255, 1);
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+.comments__list {
+  padding-left: 0;
+}
+
+.commentCard {
+  border: 1px solid rgba(255, 125, 0, 1);
+  background-color: rgba(255, 125, 0, 0.3);
+  margin: 10px 0px;
+}
+
+.commentCard__voteButton--voted-false {
+}
+
+.commentCard__voteButton--voted-true {
+  background-color: #f79d65;
+}
+/* END COMMENTS */

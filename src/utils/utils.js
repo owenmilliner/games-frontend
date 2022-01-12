@@ -1,31 +1,50 @@
-import { patchReviewById } from './api';
+import { patchReviewById, patchCommentById } from './api';
 
-export const handleVote = (review_id, voted, voteCount, setVoteCount) => {
+export const handleVote = (
+  id,
+  voted,
+  voteCount,
+  setVoteCount,
+  page,
+  reviewOrComment = 'review'
+) => {
   if (!voted) {
     setVoteCount(voteCount + 1);
     const voteButton = document.getElementsByClassName(
-      'reviewCard__voteButton--voted-false'
+      `${page}__voteButton--voted-false`
     )[0];
 
     voteButton.innerHTML = 'voted!';
-    voteButton.className = 'reviewCard__voteButton--voted-true';
+    voteButton.className = `${page}__voteButton--voted-true`;
 
-    patchReviewById(review_id, true)
-      .then()
-      .catch((error) => console.log(error));
+    if (reviewOrComment === 'review') {
+      patchReviewById(id, true)
+        .then()
+        .catch((error) => console.log(error));
+    } else {
+      patchCommentById(id, true)
+        .then()
+        .catch((error) => console.log(error));
+    }
     return true;
   } else {
     setVoteCount(voteCount - 1);
     const voteButton = document.getElementsByClassName(
-      'reviewCard__voteButton--voted-true'
+      `${page}__voteButton--voted-true`
     )[0];
 
     voteButton.innerHTML = 'vote';
-    voteButton.className = 'reviewCard__voteButton--voted-false';
+    voteButton.className = `${page}__voteButton--voted-false`;
 
-    patchReviewById(review_id, false)
-      .then()
-      .catch((error) => console.log(error));
+    if (reviewOrComment === 'review') {
+      patchReviewById(id, false)
+        .then()
+        .catch((error) => console.log(error));
+    } else {
+      patchCommentById(id, false)
+        .then()
+        .catch((error) => console.log(error));
+    }
     return false;
   }
 };

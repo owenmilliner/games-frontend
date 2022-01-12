@@ -25,7 +25,13 @@ const ReviewCard = ({ review }) => {
         className='reviewCard__voteButton--voted-false'
         onClick={() => {
           setVoted(
-            handleVote(review.review_id, voted, voteCount, setVoteCount)
+            handleVote(
+              review.review_id,
+              voted,
+              voteCount,
+              setVoteCount,
+              'reviewCard'
+            )
           );
         }}
       >

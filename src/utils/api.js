@@ -23,7 +23,7 @@ export const getCategories = () => {
 export const patchReviewById = (review_id, increase) => {
   return gamesApi
     .patch(`/reviews/${review_id}`, { inc_votes: increase ? 1 : -1 })
-    .then((response) => response.data.categories)
+    .then((response) => response.data.review)
     .catch((error) => console.log(error));
 };
 
@@ -31,5 +31,21 @@ export const getReviewById = (review_id) => {
   return gamesApi
     .get(`/reviews/${review_id}`)
     .then((response) => response.data.review)
+    .catch((error) => console.log(error));
+};
+
+export const getReviewCommentsById = (review_id) => {
+  return gamesApi
+    .get(`/reviews/${review_id}/comments`)
+    .then((response) => response.data.comments)
+    .catch((error) => console.log(error));
+};
+
+export const patchCommentById = (comment_id, increase) => {
+  return gamesApi
+    .patch(`/comments/${comment_id}`, {
+      inc_votes: increase ? 1 : -1,
+    })
+    .then((response) => response.data.comment)
     .catch((error) => console.log(error));
 };

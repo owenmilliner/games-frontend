@@ -1,10 +1,11 @@
 import ExpandedReviewCard from './ExpandedReviewCard';
+import Comments from './Comments';
 
 const ExpandedReview = () => {
   return (
     <div className='expandedReview'>
-      <p>ExpandedReview!</p>
       <ExpandedReviewCard />
+      <Comments />
     </div>
   );
 };
