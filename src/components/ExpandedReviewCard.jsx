@@ -20,11 +20,7 @@ const ExpandedReviewCard = ({ singleReviewData }) => {
       <p className='expandedReviewCard__info'>
         <strong>{singleReviewData.category}</strong> posted by{' '}
         <strong>{singleReviewData.owner}</strong> on{' '}
-        <strong>
-          {singleReviewData.created_at
-            ? singleReviewData.created_at.slice(0, 10)
-            : null}
-        </strong>
+        <strong>{singleReviewData.created_at.slice(0, 10)}</strong>
       </p>
       <h2 className='expandedReviewCard__title'>{singleReviewData.title}</h2>
       <p className='expandedReviewCard__body'>{singleReviewData.review_body}</p>

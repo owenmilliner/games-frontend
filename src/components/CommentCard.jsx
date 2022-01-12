@@ -11,9 +11,7 @@ const CommentCard = ({ comment }) => {
     <div className='commentCard'>
       <p className='commentCard__info'>
         <strong>{comment.author}</strong> on{' '}
-        <strong>
-          {comment.created_at ? comment.created_at.slice(0, 10) : null}
-        </strong>
+        <strong>{comment.created_at.slice(0, 10)}</strong>
       </p>
       <p className='commentCard__body'>{comment.body}</p>
       <button
