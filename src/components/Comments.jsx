@@ -15,7 +15,7 @@ const Comments = () => {
   }, [review_id]);
 
   return (
-    <div className='comments'>
+    <div className='comments' id='comments'>
       <ul className='comments__list'>
         {commentsData.map((comment) => (
           <CommentCard key={comment.comment_id} comment={comment} />
