@@ -6,21 +6,29 @@ import CategoryList from './CategoryList';
 const Reviews = () => {
   const [reviewsData, setReviewsData] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState('all');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getReviews({ category: categoryFilter }).then((result) => {
       setReviewsData(result);
+      setIsLoading(false);
     });
   }, [categoryFilter]);
 
   return (
-    <div className='reviews'>
-      <CategoryList setCategoryFilter={setCategoryFilter} />
-      <ul className='reviews__list'>
-        {reviewsData.map((review) => (
-          <ReviewCard key={review.review_id} review={review} />
-        ))}
-      </ul>
+    <div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className='reviews'>
+          <CategoryList setCategoryFilter={setCategoryFilter} />
+          <ul className='reviews__list'>
+            {reviewsData.map((review) => (
+              <ReviewCard key={review.review_id} review={review} />
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

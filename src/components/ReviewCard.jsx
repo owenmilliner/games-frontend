@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { handleVote } from '../utils/utils';
+import { useVotes } from '../hooks/useVotes';
 
 const ReviewCard = ({ review }) => {
-  const [voteCount, setVoteCount] = useState(0);
-  const [voted, setVoted] = useState(false);
-
-  useEffect(() => setVoteCount(review.votes), [review.votes]);
+  const { votes, handleVotes, voted } = useVotes(
+    review.votes,
+    'review',
+    review.review_id
+  );
 
   return (
     <div className='reviewCard'>
@@ -22,22 +23,18 @@ const ReviewCard = ({ review }) => {
         <h2 className='reviewCard__title'>{review.title}</h2>
       </Link>
       <button
-        className='reviewCard__voteButton--voted-false'
+        className={
+          voted
+            ? 'reviewCard__voteButton--voted-true'
+            : 'reviewCard__voteButton--voted-false'
+        }
         onClick={() => {
-          setVoted(
-            handleVote(
-              review.review_id,
-              voted,
-              voteCount,
-              setVoteCount,
-              'reviewCard'
-            )
-          );
+          handleVotes();
         }}
       >
-        vote
+        {voted ? 'voted!' : 'vote'}
       </button>
-      <p className='reviewCard__voteCounter'>{voteCount}</p>
+      <p className='reviewCard__voteCounter'>{votes}</p>
       <button className='reviewCard__commentButton'>comments</button>
       <p className='reviewCard__commentCount'>{review.comment_count}</p>
       <Link

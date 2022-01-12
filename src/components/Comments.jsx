@@ -7,20 +7,30 @@ import CommentCard from './CommentCard';
 const Comments = () => {
   const { review_id } = useParams();
   const [commentsData, setCommentsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getReviewCommentsById(review_id)
-      .then((result) => setCommentsData(result))
+      .then((result) => {
+        setCommentsData(result);
+        setIsLoading(false);
+      })
       .catch((error) => console.log(error));
   }, [review_id]);
 
   return (
-    <div className='comments' id='comments'>
-      <ul className='comments__list'>
-        {commentsData.map((comment) => (
-          <CommentCard key={comment.comment_id} comment={comment} />
-        ))}
-      </ul>
+    <div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className='comments' id='comments'>
+          <ul className='comments__list'>
+            {commentsData.map((comment) => (
+              <CommentCard key={comment.comment_id} comment={comment} />
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
