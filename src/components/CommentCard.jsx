@@ -1,7 +1,7 @@
 import { useVotes } from '../hooks/useVotes';
 
 const CommentCard = ({ comment }) => {
-  const { count, handleCount, voted } = useVotes(
+  const { votes, handleVotes, voted } = useVotes(
     comment.votes,
     'comment',
     comment.comment_id
@@ -23,12 +23,12 @@ const CommentCard = ({ comment }) => {
             : 'commentCard__voteButton--voted-false'
         }
         onClick={() => {
-          handleCount();
+          handleVotes();
         }}
       >
         {voted ? 'voted!' : 'vote'}
       </button>
-      <p className='commentCard__voteCounter'>{count}</p>
+      <p className='commentCard__voteCounter'>{votes}</p>
     </div>
   );
 };

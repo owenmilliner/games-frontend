@@ -1,25 +1,25 @@
 import { patchReviewById, patchCommentById } from '../utils/api';
 import { useState } from 'react';
 
-export const useVotes = (startCount = 0, page, id) => {
-  const [count, setCount] = useState(startCount);
+export const useVotes = (startVotes = 0, page, id) => {
+  const [votes, setVotes] = useState(startVotes);
   const [voted, setVoted] = useState(false);
 
-  const handleCount = () => {
-    setCount((currentCount) => (voted ? currentCount - 1 : currentCount + 1));
+  const handleVotes = () => {
+    setVotes((currentVotes) => (voted ? currentVotes - 1 : currentVotes + 1));
 
     if (page === 'comment') {
       patchCommentById(id, voted)
-        .then((response) => response.data.comment)
+        .then((response) => response.data)
         .catch((error) => console.log(error));
     } else {
       patchReviewById(id, voted)
-        .then((response) => response.data.review)
+        .then((response) => response.data)
         .catch((error) => console.log(error));
     }
 
     setVoted(!voted);
   };
 
-  return { count, handleCount, voted };
+  return { votes, handleVotes, voted };
 };

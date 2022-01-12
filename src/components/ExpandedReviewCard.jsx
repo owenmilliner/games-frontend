@@ -1,28 +1,15 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getReviewById } from '../utils/api';
-import { handleVote } from '../utils/utils';
+import { useVotes } from '../hooks/useVotes';
 
-const ExpandedReviewCard = () => {
-  const { review_id } = useParams();
-  const [singleReviewData, setSingleReviewData] = useState([]);
-  const [voteCount, setVoteCount] = useState(0);
-  const [voted, setVoted] = useState(false);
+const ExpandedReviewCard = ({ singleReviewData }) => {
+  const { votes, handleVotes, voted } = useVotes(
+    singleReviewData.votes,
+    'review',
+    singleReviewData.review_id
+  );
 
   const handleCommentsScroll = () => {
     document.getElementById('comments').scrollIntoView();
   };
-
-  useEffect(() => {
-    getReviewById(review_id)
-      .then((result) => setSingleReviewData(result))
-      .catch((error) => console.log(error)); // Are these catches necessary when I already have catches in api.js
-  }, [review_id]);
-
-  useEffect(
-    () => setVoteCount(singleReviewData.votes),
-    [singleReviewData.votes]
-  );
 
   return (
     <div className='expandedReviewCard'>
@@ -30,7 +17,7 @@ const ExpandedReviewCard = () => {
         <strong>{singleReviewData.category}</strong> posted by{' '}
         <strong>{singleReviewData.owner}</strong> on{' '}
         <strong>
-          {singleReviewData.created_at // Why do I need a ternary here, but not in ReviewCard.js
+          {singleReviewData.created_at
             ? singleReviewData.created_at.slice(0, 10)
             : null}
         </strong>
@@ -38,22 +25,18 @@ const ExpandedReviewCard = () => {
       <h2 className='expandedReviewCard__title'>{singleReviewData.title}</h2>
       <p className='expandedReviewCard__body'>{singleReviewData.review_body}</p>
       <button
-        className='expandedReviewCard__voteButton--voted-false'
+        className={
+          voted
+            ? 'expandedReviewCard__voteButton--voted-true'
+            : 'expandedReviewCard__voteButton--voted-false'
+        }
         onClick={() => {
-          setVoted(
-            handleVote(
-              singleReviewData.review_id,
-              voted,
-              voteCount,
-              setVoteCount,
-              'expandedReviewCard'
-            )
-          );
+          handleVotes();
         }}
       >
-        vote
+        {voted ? 'voted!' : 'vote'}
       </button>
-      <p className='expandedReviewCard__voteCounter'>{voteCount}</p>
+      <p className='expandedReviewCard__voteCounter'>{votes}</p>
       <button
         className='expandedReviewCard__commentButton'
         onClick={handleCommentsScroll}
