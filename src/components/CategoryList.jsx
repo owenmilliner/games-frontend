@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getCategories } from '../utils/api';
 
-const CategoryList = ({ setCategoryFilter }) => {
+const CategoryList = ({ categoryFilter, setCategoryFilter }) => {
   const [categoryData, setCategoryData] = useState([]);
 
   useEffect(() => {
@@ -11,22 +11,26 @@ const CategoryList = ({ setCategoryFilter }) => {
   const handleCategoryFiltering = (newCategory) => {
     setCategoryFilter(newCategory);
 
-    document.getElementsByClassName(
-      'categories__list__element--state-active'
-    )[0].className = 'categories__list__element--state-inactive';
+    // document.getElementsByClassName(
+    //   'categories__list__element--state-active'
+    // )[0].className = 'categories__list__element--state-inactive';
 
-    document.getElementById(`category__${newCategory}`).className =
-      'categories__list__element--state-active';
+    // document.getElementById(`category__${newCategory}`).className =
+    //   'categories__list__element--state-active';
   };
 
   return (
     <div className='categories'>
       <ul className='categories__list'>
         <li
-          key={'all'}
+          key={''}
           id={'category__all'}
-          className='categories__list__element--state-active'
-          onClick={() => handleCategoryFiltering('all')}
+          className={
+            categoryFilter === ''
+              ? 'categories__list__element--state-active'
+              : 'categories__list__element--state-inactive'
+          }
+          onClick={() => handleCategoryFiltering('')}
         >
           all
         </li>
@@ -34,7 +38,11 @@ const CategoryList = ({ setCategoryFilter }) => {
           <li
             key={category.slug}
             id={`category__${category.slug}`}
-            className='categories__list__element--state-inactive'
+            className={
+              categoryFilter === category.slug
+                ? 'categories__list__element--state-active'
+                : 'categories__list__element--state-inactive'
+            }
             onClick={() => handleCategoryFiltering(category.slug)}
           >
             {category.slug}

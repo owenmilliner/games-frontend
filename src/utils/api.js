@@ -5,10 +5,14 @@ const gamesApi = axios.create({
 });
 
 export const getReviews = (query) => {
+  // return gamesApi
+  //   .get(
+  //     `/reviews${query.category !== 'all' ? `?category=${query.category}` : ''}`
+  //   )
+  //   .then((response) => response.data.reviews);
+
   return gamesApi
-    .get(
-      `/reviews${query.category !== 'all' ? `?category=${query.category}` : ''}`
-    )
+    .get('/reviews', { params: { category: query.category } })
     .then((response) => response.data.reviews);
 };
 

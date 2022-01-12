@@ -5,7 +5,7 @@ import CategoryList from './CategoryList';
 
 const Reviews = () => {
   const [reviewsData, setReviewsData] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState('all');
+  const [categoryFilter, setCategoryFilter] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -21,7 +21,10 @@ const Reviews = () => {
         <p>Loading...</p>
       ) : (
         <div className='reviews'>
-          <CategoryList setCategoryFilter={setCategoryFilter} />
+          <CategoryList
+            categoryFilter={categoryFilter}
+            setCategoryFilter={setCategoryFilter}
+          />
           <ul className='reviews__list'>
             {reviewsData.map((review) => (
               <ReviewCard key={review.review_id} review={review} />
