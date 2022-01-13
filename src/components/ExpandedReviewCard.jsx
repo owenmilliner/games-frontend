@@ -4,7 +4,12 @@ import { UserContext } from '../contexts/UserContext';
 import { useContext, useState } from 'react';
 import { postCommentByReviewId } from '../utils/api';
 
-const ExpandedReviewCard = ({ singleReviewData }) => {
+const ExpandedReviewCard = ({
+  singleReviewData,
+  commentsData,
+  setCommentsData,
+  setCommentPosted,
+}) => {
   const { votes, handleVotes, voted } = useVotes(
     singleReviewData.votes,
     'review',
@@ -28,7 +33,12 @@ const ExpandedReviewCard = ({ singleReviewData }) => {
     postCommentByReviewId(singleReviewData.review_id, {
       username: username,
       body: commentBody,
-    }).then(() => setIsCommenting(false));
+    }).then(() => {
+      setIsCommenting(false);
+      setCommentPosted(true);
+      // TODO: Removal of additional api call.
+      // setCommentsData([{}, ...commentsData]);
+    });
   };
   const handleCommentChange = (event) => {
     setCommentBody(event.target.value);
