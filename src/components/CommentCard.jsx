@@ -11,7 +11,8 @@ const CommentCard = ({ comment, setCommentDeleted }) => {
   );
   const { username } = useContext(UserContext);
 
-  const handleCommentDeletion = () => {
+  const handleCommentDeletion = (event) => {
+    event.preventDefault();
     if (window.confirm('Are you sure you want to delete this comment?')) {
       deleteCommentById(comment.comment_id)
         .then(() => setCommentDeleted(true))

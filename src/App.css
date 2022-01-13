@@ -243,10 +243,10 @@ button {
   border-radius: 8px;
   display: grid;
   grid-template-areas:
-    'info info info info info'
-    'title title title title title'
-    'body body body body body'
-    'voteButton voteCounter commentButton commentCounter fill';
+    'info info info info info info'
+    'title title title title title title'
+    'body body body body body body'
+    'voteButton voteCounter commentButton commentCounter fill newComment';
   grid-template-rows: 20px 40px auto 20px;
   grid-template-columns: 60px 40px 80px 40px auto;
   overflow: hidden;
@@ -290,6 +290,15 @@ button {
   margin-top: 4px;
   text-align: center;
   grid-area: commentCounter;
+}
+
+.expandedReviewCard__newComment--status-active {
+  background-color: #a44a3f;
+  grid-area: newComment;
+}
+
+.expandedReviewCard__newComment--status-inactive {
+  grid-area: newComment;
 }
 
 /* END EXPANDED REVIEW */

@@ -51,3 +51,9 @@ export const deleteCommentById = (comment_id) => {
     .delete(`/comments/${comment_id}`)
     .then((response) => console.log('Comment deleted.', response));
 };
+
+export const postCommentByReviewId = (review_id, comment) => {
+  return gamesApi
+    .post(`/reviews/${review_id}/comments`, comment)
+    .then((response) => response.data.comment);
+};

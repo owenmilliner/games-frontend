@@ -7,6 +7,7 @@ import { CommentContext } from '../contexts/CommentContext';
 
 const Comments = () => {
   const { review_id } = useParams();
+  // TODO: Rather than new api call, update commentsData state
   const [commentsData, setCommentsData] = useState([]);
   const [commentDeleted, setCommentDeleted] = useState([false]);
   const [isLoading, setIsLoading] = useState(true);

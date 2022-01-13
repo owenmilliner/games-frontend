@@ -3,17 +3,13 @@ import { useState, useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 
 export const useLogin = (usernameInput) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { setUsername } = useContext(UserContext);
+  const { setUsername, isLoggedIn, setIsLoggedIn } = useContext(UserContext);
 
   const handleLogin = () => {
-    console.log('here');
     getUsers()
       .then((usersArray) => {
-        console.log(usernameInput, usersArray);
         usersArray.forEach((user) => {
           if (user.username === usernameInput) {
-            console.log('match!');
             setIsLoggedIn(true);
             setUsername(usernameInput);
           }
