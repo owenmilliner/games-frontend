@@ -6,8 +6,8 @@ import { postCommentByReviewId } from '../utils/api';
 
 const ExpandedReviewCard = ({
   singleReviewData,
-  commentsData,
-  setCommentsData,
+  // commentsData,
+  // setCommentsData,
   setCommentPosted,
 }) => {
   const { votes, handleVotes, voted } = useVotes(
@@ -100,7 +100,9 @@ const ExpandedReviewCard = ({
             value={commentBody}
             onChange={handleCommentChange}
           />
-          <button type='submit'>post</button>
+          <button type='submit' className='newComment_button'>
+            post
+          </button>
         </form>
       ) : null}
     </div>

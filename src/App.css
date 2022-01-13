@@ -301,6 +301,24 @@ button {
   grid-area: newComment;
 }
 
+.newComment {
+  padding: 10px;
+  margin: auto;
+  padding-bottom: 0;
+  padding-top: 40px;
+}
+
+.newComment__body {
+  width: 700px;
+  height: 100px;
+  margin-right: 25px;
+  display: inline;
+}
+
+.newComment__button {
+  display: inline;
+  margin-left: 10px;
+}
 /* END EXPANDED REVIEW */
 
 /* COMMENTS */
