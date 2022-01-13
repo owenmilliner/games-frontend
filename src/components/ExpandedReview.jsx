@@ -36,6 +36,7 @@ const ExpandedReview = () => {
             commentsData={commentsData}
             setCommentsData={setCommentsData}
             commentPosted={commentPosted}
+            setCommentPosted={setCommentPosted}
           />
         </div>
       )}
