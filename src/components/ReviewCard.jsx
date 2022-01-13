@@ -34,6 +34,7 @@ const ReviewCard = ({ review }) => {
         {voted ? 'voted!' : 'vote'}
       </button>
       <p className='reviewCard__voteCounter'>{votes}</p>
+      {/* TODO: useNavigate to send to comments of the selected review. */}
       <button className='reviewCard__commentButton'>comments</button>
       <p className='reviewCard__commentCount'>{review.comment_count}</p>
       <Link
