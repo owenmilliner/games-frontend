@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Reviews from './components/Reviews';
 import ExpandedReview from './components/ExpandedReview';
 import Login from './components/Login';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -18,9 +19,9 @@ function App() {
             path='/reviews/:review_id'
             element={<ExpandedReview />}
           ></Route>
+          <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </div>
-      ;
     </BrowserRouter>
   );
 }
