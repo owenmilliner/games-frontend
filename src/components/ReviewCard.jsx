@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useVotes } from '../hooks/useVotes';
 
 const ReviewCard = ({ review }) => {
@@ -35,7 +35,12 @@ const ReviewCard = ({ review }) => {
       </button>
       <p className='reviewCard__voteCounter'>{votes}</p>
       {/* TODO: useNavigate to send to comments of the selected review. */}
-      <button className='reviewCard__commentButton'>comments</button>
+      <button
+        className='reviewCard__commentButton'
+        // onClick={<Navigate to={'/'}/>}
+      >
+        comments
+      </button>
       <p className='reviewCard__commentCount'>{review.comment_count}</p>
       <Link
         to={`/reviews/${review.review_id}`}

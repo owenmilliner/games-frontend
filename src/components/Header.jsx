@@ -62,7 +62,12 @@ const Header = () => {
               value={usernameSearchTerm}
               onChange={handleUsernameChange}
             ></input>
-            <label htmlFor='username' className='login__text' type='submit'>
+            <label
+              htmlFor='username'
+              className='login__text'
+              type='submit'
+              onClick={handleLoginForm}
+            >
               Login
             </label>
           </form>

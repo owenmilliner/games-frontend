@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getReviews } from '../utils/api';
 import ReviewCard from './ReviewCard';
 import CategoryList from './CategoryList';
+import Sorting from './Sorting';
 
 const Reviews = () => {
   const [reviewsData, setReviewsData] = useState([]);
@@ -25,6 +26,7 @@ const Reviews = () => {
             categoryFilter={categoryFilter}
             setCategoryFilter={setCategoryFilter}
           />
+          <Sorting />
           <ul className='reviews__list'>
             {reviewsData.map((review) => (
               <ReviewCard key={review.review_id} review={review} />

@@ -110,6 +110,8 @@ html {
 
 .categories__list {
   padding-left: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #6d597a;
 }
 
 .categories__list__element--state-inactive {
