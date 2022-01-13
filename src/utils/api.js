@@ -6,7 +6,13 @@ const gamesApi = axios.create({
 
 export const getReviews = (query) => {
   return gamesApi
-    .get('/reviews', { params: { category: query.category } })
+    .get('/reviews', {
+      params: {
+        sort: query.sortValue,
+        order: query.sortingOrder,
+        category: query.category,
+      },
+    })
     .then((response) => response.data.reviews);
 };
 

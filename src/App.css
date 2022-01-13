@@ -103,6 +103,7 @@ html {
 .reviews {
 }
 
+/* REVIEWS - CATEGORIES */
 .categories {
   width: 800px;
   margin: auto;
@@ -132,6 +133,38 @@ html {
   cursor: pointer;
   font-size: 14px;
 }
+
+/* END REVIEWS - CATEGORIES */
+
+/* REVIEWS - SORTING */
+
+.sorting {
+}
+
+.sorting__list {
+  padding: 0;
+}
+
+.sorting__list__element--state-inactive {
+  list-style-type: none;
+  display: inline;
+  padding: 0px 30px;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sorting__list__element--state-active {
+  list-style-type: none;
+  display: inline;
+  padding: 0px 30px;
+  color: #f79d65;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* END REVIEWS - SORTING */
 
 .reviews__list {
   padding-left: 0;

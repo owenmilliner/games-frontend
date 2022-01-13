@@ -8,13 +8,20 @@ const Reviews = () => {
   const [reviewsData, setReviewsData] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  // TODO: Implement sorting.
+  const [sortValue, setSortValue] = useState('created_at');
+  const [sortingOrder, setSortingOrder] = useState('desc');
 
   useEffect(() => {
-    getReviews({ category: categoryFilter }).then((result) => {
+    getReviews({
+      category: categoryFilter,
+      sortValue: sortValue,
+      sortingOrder: sortingOrder,
+    }).then((result) => {
       setReviewsData(result);
       setIsLoading(false);
     });
-  }, [categoryFilter]);
+  }, [categoryFilter, sortingOrder, sortValue]);
 
   return (
     <div>
@@ -26,7 +33,12 @@ const Reviews = () => {
             categoryFilter={categoryFilter}
             setCategoryFilter={setCategoryFilter}
           />
-          <Sorting />
+          <Sorting
+            sortValue={sortValue}
+            setSortValue={setSortValue}
+            sortingOrder={sortingOrder}
+            setSortingOrder={setSortingOrder}
+          />
           <ul className='reviews__list'>
             {reviewsData.map((review) => (
               <ReviewCard key={review.review_id} review={review} />
