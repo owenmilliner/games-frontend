@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { deleteCommentById } from '../utils/api';
 
-const CommentCard = ({ comment, setCommentDeleted }) => {
+const CommentCard = ({ comment, setCommentsData, commentsData }) => {
   const { votes, handleVotes, voted } = useVotes(
     comment.votes,
     'comment',
@@ -15,7 +15,17 @@ const CommentCard = ({ comment, setCommentDeleted }) => {
     event.preventDefault();
     if (window.confirm('Are you sure you want to delete this comment?')) {
       deleteCommentById(comment.comment_id)
-        .then(() => setCommentDeleted(true))
+        .then(() => {
+          let toDeleteIndex;
+          commentsData.forEach((currComment, index) => {
+            if (currComment.comment_id === comment.comment_id) {
+              toDeleteIndex = index;
+            }
+          });
+          const updatedCommentsData = [...commentsData];
+          updatedCommentsData.splice(toDeleteIndex, 1);
+          setCommentsData(updatedCommentsData);
+        })
         .catch((error) => console.log(error));
     }
   };

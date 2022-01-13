@@ -8,6 +8,7 @@ const ExpandedReview = () => {
   const { review_id } = useParams();
   const [singleReviewData, setSingleReviewData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [commentsData, setCommentsData] = useState([]);
 
   useEffect(() => {
     getReviewById(review_id)
@@ -25,7 +26,10 @@ const ExpandedReview = () => {
       ) : (
         <div className='expandedReview'>
           <ExpandedReviewCard singleReviewData={singleReviewData} />
-          <Comments />
+          <Comments
+            commentsData={commentsData}
+            setCommentsData={setCommentsData}
+          />
         </div>
       )}
     </div>

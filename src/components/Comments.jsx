@@ -5,11 +5,8 @@ import { useEffect, useState, useContext } from 'react';
 import CommentCard from './CommentCard';
 import { CommentContext } from '../contexts/CommentContext';
 
-const Comments = () => {
+const Comments = ({ commentsData, setCommentsData }) => {
   const { review_id } = useParams();
-  // TODO: Rather than new api call, update commentsData state
-  const [commentsData, setCommentsData] = useState([]);
-  const [commentDeleted, setCommentDeleted] = useState([false]);
   const [isLoading, setIsLoading] = useState(true);
   const { commentReference } = useContext(CommentContext);
 
@@ -20,7 +17,7 @@ const Comments = () => {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [review_id, commentDeleted]);
+  }, [review_id]);
 
   return (
     <div>
@@ -33,7 +30,8 @@ const Comments = () => {
               <CommentCard
                 key={comment.comment_id}
                 comment={comment}
-                setCommentDeleted={setCommentDeleted}
+                commentsData={commentsData}
+                setCommentsData={setCommentsData}
               />
             ))}
           </ul>
