@@ -13,12 +13,18 @@ html {
 }
 
 /* HEADER */
-
-.header {
+.headerParent {
   /* https://coolors.co/355070-6d597a-b56576-e56b6f-eaac8b */
   background-color: #6d597a;
+  width: auto;
+}
+
+.header {
+  background-color: #6d597a;
+  width: 800px;
+  margin: auto;
   display: grid;
-  grid-template-columns: 25% 50% 25%;
+  grid-template-columns: 200px 400px 200px;
   grid-template-areas: 'one two three';
 }
 
@@ -45,12 +51,49 @@ html {
 }
 
 .searchBar__input {
-  width: 500px;
+  width: 250px;
   cursor: not-allowed;
 }
 
 .searchBar__element {
   display: inline;
+}
+
+.header__user {
+  margin-left: auto;
+  grid-area: three;
+  margin: 10px;
+}
+
+.user__username {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  display: inline;
+}
+
+.user__signout {
+  display: inline;
+  width: 15px;
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+}
+
+.header__login {
+  margin: auto;
+  color: white;
+  grid-area: three;
+}
+
+.login__input {
+  width: 100px;
+}
+
+.login__text {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 /* END-HEADER */
@@ -61,6 +104,8 @@ html {
 }
 
 .categories {
+  width: 800px;
+  margin: auto;
 }
 
 .categories__list {
@@ -70,18 +115,20 @@ html {
 .categories__list__element--state-inactive {
   list-style-type: none;
   display: inline;
-  padding: 0px 25px;
+  padding: 0px 15px;
   color: black;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .categories__list__element--state-active {
   list-style-type: none;
   display: inline;
-  padding: 0px 25px;
+  padding: 0px 15px;
   color: #f79d65;
   font-weight: bold;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .reviews__list {

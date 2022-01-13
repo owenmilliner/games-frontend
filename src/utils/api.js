@@ -41,3 +41,7 @@ export const patchCommentById = (comment_id, voted) => {
     })
     .then((response) => response.data.comment);
 };
+
+export const getUsers = () => {
+  return gamesApi.get(`/users`).then((response) => response.data.users);
+};

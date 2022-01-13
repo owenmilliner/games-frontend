@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CommentProvider } from './contexts/CommentContext';
+import { UserProvider } from './contexts/UserContext';
 
 ReactDOM.render(
   <CommentProvider>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </CommentProvider>,
   document.getElementById('root')
 );
