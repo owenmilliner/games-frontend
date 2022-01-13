@@ -218,8 +218,8 @@ button {
 .reviewCard__commentButton {
   grid-area: cButton;
   margin-bottom: 15px;
-  cursor: not-allowed;
 }
+
 .reviewCard__commentCount {
   grid-area: cCount;
   padding-top: 5px;

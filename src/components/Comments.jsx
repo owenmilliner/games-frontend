@@ -5,12 +5,7 @@ import { useEffect, useState, useContext } from 'react';
 import CommentCard from './CommentCard';
 import { CommentContext } from '../contexts/CommentContext';
 
-const Comments = ({
-  commentsData,
-  setCommentsData,
-  commentPosted,
-  setCommentPosted,
-}) => {
+const Comments = ({ commentsData, setCommentsData }) => {
   const { review_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const { commentReference } = useContext(CommentContext);
@@ -20,10 +15,9 @@ const Comments = ({
       .then((result) => {
         setCommentsData(result);
         setIsLoading(false);
-        setCommentPosted(false);
       })
       .catch((error) => console.log(error));
-  }, [review_id, commentPosted]);
+  }, [review_id]);
 
   return (
     <div>

@@ -6,9 +6,8 @@ import { postCommentByReviewId } from '../utils/api';
 
 const ExpandedReviewCard = ({
   singleReviewData,
-  // commentsData,
-  // setCommentsData,
-  setCommentPosted,
+  commentsData,
+  setCommentsData,
 }) => {
   const { votes, handleVotes, voted } = useVotes(
     singleReviewData.votes,
@@ -33,11 +32,9 @@ const ExpandedReviewCard = ({
     postCommentByReviewId(singleReviewData.review_id, {
       username: username,
       body: commentBody,
-    }).then(() => {
+    }).then((comment) => {
       setIsCommenting(false);
-      setCommentPosted(true);
-      // TODO: Removal of additional api call.
-      // setCommentsData([{}, ...commentsData]);
+      setCommentsData([comment, ...commentsData]);
     });
   };
   const handleCommentChange = (event) => {
