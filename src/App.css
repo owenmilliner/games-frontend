@@ -312,17 +312,22 @@ button {
   border-radius: 8px;
   display: grid;
   grid-template-areas:
-    'info info info'
-    'body body body'
-    'voteButton voteCounter fill';
+    'info info info delete'
+    'body body body body'
+    'voteButton voteCounter fill fill';
   grid-template-rows: 20px auto 20px;
-  grid-template-columns: 60px 40px auto;
+  grid-template-columns: 60px 40px auto 60px;
   overflow: hidden;
 }
 
 .commentCard__info {
   margin-top: 0px;
   grid-area: info;
+}
+
+.commentCard__delete {
+  grid-area: delete;
+  background-color: #a44a3f;
 }
 
 .commentCard__body {

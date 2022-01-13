@@ -8,6 +8,7 @@ import { CommentContext } from '../contexts/CommentContext';
 const Comments = () => {
   const { review_id } = useParams();
   const [commentsData, setCommentsData] = useState([]);
+  const [commentDeleted, setCommentDeleted] = useState([false]);
   const [isLoading, setIsLoading] = useState(true);
   const { commentReference } = useContext(CommentContext);
 
@@ -18,7 +19,7 @@ const Comments = () => {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [review_id]);
+  }, [review_id, commentDeleted]);
 
   return (
     <div>
@@ -28,7 +29,11 @@ const Comments = () => {
         <div className='comments' id='comments' ref={commentReference}>
           <ul className='comments__list'>
             {commentsData.map((comment) => (
-              <CommentCard key={comment.comment_id} comment={comment} />
+              <CommentCard
+                key={comment.comment_id}
+                comment={comment}
+                setCommentDeleted={setCommentDeleted}
+              />
             ))}
           </ul>
         </div>

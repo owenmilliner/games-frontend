@@ -45,3 +45,9 @@ export const patchCommentById = (comment_id, voted) => {
 export const getUsers = () => {
   return gamesApi.get(`/users`).then((response) => response.data.users);
 };
+
+export const deleteCommentById = (comment_id) => {
+  return gamesApi
+    .delete(`/comments/${comment_id}`)
+    .then((response) => console.log('Comment deleted.', response));
+};
