@@ -13,18 +13,33 @@ const Reviews = () => {
   const [sortingOrder, setSortingOrder] = useState('desc');
   // May not be the best way to do this, but I think it makes more sense to reload the data, especially if the review which has been posted is not in the current sorting/filtering criteria. In addition to this, the review-photo does not load straight away, unless the page is re-rendered.
   const [reviewPosted, setReviewPosted] = useState(false);
+  // FIXME: THIS IS A TEST FOR THE INFINITE SCROLL
+  const [totalReviewCount, setTotalReviewCount] = useState(0);
+  // const [isMoreData, setIsMoreData] = useState(true);
+  const [currentPageNumber, setCurrentPageNumber] = useState(1);
 
   useEffect(() => {
     getReviews({
       category: categoryFilter,
       sortValue: sortValue,
       sortingOrder: sortingOrder,
+      total_count: true,
+      page: currentPageNumber,
+      limit: 100,
     }).then((result) => {
-      setReviewsData(result);
+      setCurrentPageNumber(1);
+      setTotalReviewCount(result.total_count);
+      setReviewsData(result.reviews);
       setIsLoading(false);
       setReviewPosted(false);
     });
-  }, [categoryFilter, sortingOrder, sortValue, reviewPosted]);
+  }, [
+    categoryFilter,
+    sortingOrder,
+    sortValue,
+    reviewPosted,
+    // currentPageNumber,
+  ]);
 
   return (
     <div>

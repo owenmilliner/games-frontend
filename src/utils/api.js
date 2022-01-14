@@ -11,9 +11,14 @@ export const getReviews = (query) => {
         sort: query.sortValue,
         order: query.sortingOrder,
         category: query.category,
+        total_count: query.total_count,
+        page: query.page,
+        limit: query.limit,
       },
     })
-    .then((response) => response.data.reviews);
+    .then((response) => {
+      return response.data;
+    });
 };
 
 export const getCategories = () => {
