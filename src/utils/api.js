@@ -69,3 +69,9 @@ export const postReview = (review) => {
     .post('/reviews', review)
     .then((response) => response.data.review);
 };
+
+export const deleteReviewById = (review_id) => {
+  return gamesApi
+    .delete(`/reviews/${review_id}`)
+    .then((response) => console.log('Review deleted.', response));
+};

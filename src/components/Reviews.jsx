@@ -51,7 +51,12 @@ const Reviews = () => {
           </div>
           <ul className='reviews__list'>
             {reviewsData.map((review) => (
-              <ReviewCard key={review.review_id} review={review} />
+              <ReviewCard
+                key={review.review_id}
+                review={review}
+                reviewsData={reviewsData}
+                setReviewsData={setReviewsData}
+              />
             ))}
           </ul>
         </div>

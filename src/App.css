@@ -277,10 +277,10 @@ textarea {
   border-radius: 8px;
   display: grid;
   grid-template-areas:
-    'link link link link link image'
-    'link link link link link image'
-    'vButton vCount cButton cCount fill image';
-  grid-template-columns: 80px 40px 80px 40px auto 265px;
+    'link link link link link link image'
+    'link link link link link link image'
+    'vButton vCount cButton cCount fill delete image';
+  grid-template-columns: 80px 40px 80px 40px auto 80px 265px;
   grid-template-rows: 40px 120px 40px;
   overflow: hidden;
 }
@@ -359,6 +359,15 @@ button {
   padding-top: 5px;
   margin: 0;
   margin-bottom: 15px;
+}
+
+.reviewCard__deleteButton {
+  grid-area: delete;
+  padding-top: 5px;
+  width: 65px;
+  margin: 0;
+  margin-bottom: 15px;
+  background-color: #a44a3f;
 }
 
 /* END REVIEWS */

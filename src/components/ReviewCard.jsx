@@ -1,12 +1,36 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 import { useVotes } from '../hooks/useVotes';
+import { UserContext } from '../contexts/UserContext';
+import { deleteReviewById } from '../utils/api';
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, reviewsData, setReviewsData }) => {
   const { votes, handleVotes, voted } = useVotes(
     review.votes,
     'review',
     review.review_id
   );
+
+  const { username } = useContext(UserContext);
+
+  const handleReviewDeletion = (event) => {
+    event.preventDefault();
+    if (window.confirm('Are you sure you want to delete this review?')) {
+      deleteReviewById(review.review_id)
+        .then(() => {
+          let toDeleteIndex;
+          reviewsData.forEach((currReview, index) => {
+            if (currReview.review_id === review.review_id) {
+              toDeleteIndex = index;
+            }
+          });
+          const updatedReviewsData = [...reviewsData];
+          updatedReviewsData.splice(toDeleteIndex, 1);
+          setReviewsData(updatedReviewsData);
+        })
+        .catch((error) => console.log(error));
+    }
+  };
 
   return (
     <div className='reviewCard'>
@@ -42,6 +66,14 @@ const ReviewCard = ({ review }) => {
         comments
       </button>
       <p className='reviewCard__commentCount'>{review.comment_count}</p>
+      {username === review.owner ? (
+        <button
+          className='reviewCard__deleteButton'
+          onClick={handleReviewDeletion}
+        >
+          delete
+        </button>
+      ) : null}
       <Link
         to={`/reviews/${review.review_id}`}
         className='reviewCard__image__link'

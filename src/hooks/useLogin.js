@@ -1,5 +1,5 @@
 import { getUsers } from '../utils/api';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 
 export const useLogin = (usernameInput) => {
