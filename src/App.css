@@ -110,6 +110,94 @@ html {
 /* REVIEWS */
 
 .reviews {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reviews__header {
+  display: grid;
+  grid-template-areas: 'empty sorting posting';
+  grid-template-columns: 100px auto 100px;
+}
+
+.sorting {
+  grid-area: sorting;
+}
+
+.postingContainer {
+  display: contents;
+}
+
+.posting--status-false {
+  grid-area: posting;
+  margin: 15px auto auto auto;
+}
+
+.posting--status-true {
+  grid-area: posting;
+  margin: 15px auto auto auto;
+  background-color: #a44a3f;
+}
+.posting__form {
+  width: 795px;
+  height: 150px;
+  margin-top: 50px;
+  display: grid;
+  grid-template-areas: 'title designer body category button' 'titleLabel designerLabel bodyLabel categoryLabel Fill';
+  grid-template-columns: 150px 125px auto 125px 75px;
+  grid-template-rows: 125px auto;
+}
+
+.posting__form__title {
+  grid-area: title;
+  margin: 10px;
+}
+
+.posting__form__titleLabel {
+  grid-area: titleLabel;
+  font-weight: bold;
+}
+
+.posting__form__designer {
+  grid-area: designer;
+  margin: 10px;
+}
+
+.posting__form__designerLabel {
+  grid-area: designerLabel;
+  font-weight: bold;
+}
+
+.posting__form__body {
+  grid-area: body;
+  margin: 10px;
+}
+
+.posting__form__bodyLabel {
+  grid-area: bodyLabel;
+  font-weight: bold;
+}
+
+.posting__form__category {
+  grid-area: category;
+  height: 30px;
+  margin: auto;
+}
+
+.posting__form__categoryLabel {
+  grid-area: categoryLabel;
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+}
+
+.posting__form__button {
+  grid-area: button;
+  height: 20px;
+  margin: auto;
 }
 
 /* REVIEWS - CATEGORIES */
@@ -121,6 +209,7 @@ html {
 .categories__list {
   padding-left: 0;
   padding-bottom: 15px;
+  margin-bottom: 0;
   border-bottom: 1px solid #6d597a;
 }
 
@@ -177,10 +266,11 @@ html {
 
 .reviews__list {
   padding-left: 0;
+  margin-top: 0;
 }
 
 .reviewCard {
-  margin: 20px auto;
+  margin: 0 auto 20px auto;
   width: 800px;
   height: 200px;
   background-color: rgba(104, 73, 104, 0.1);

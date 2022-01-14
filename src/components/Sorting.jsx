@@ -4,7 +4,13 @@ const Sorting = ({
   sortingOrder,
   setSortingOrder,
 }) => {
-  const availableSortValues = ['created_at', 'owner', 'category', 'votes'];
+  const availableSortValues = [
+    'created_at',
+    'title',
+    'owner',
+    'category',
+    'votes',
+  ];
 
   const handleSortChange = (newSortValue) => {
     if (newSortValue === sortValue) {

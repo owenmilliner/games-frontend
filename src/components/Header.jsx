@@ -26,8 +26,9 @@ const Header = () => {
         <Link to='/reviews' className='link header__link'>
           <h1 className='header__title'>Game Ratings</h1>
         </Link>
+        {/* FIXME: Currently not being used due to lack of api capability. */}
         {/* <div className='header__searchBar'> */}
-        <form className='header__searchBar'>
+        {/* <form className='header__searchBar'>
           <label htmlFor='search'>
             <img
               className='searchBar__image searchBar__element'
@@ -41,7 +42,8 @@ const Header = () => {
             type='text'
             placeholder='Search'
           ></input>
-        </form>
+        </form> */}
+        {/* FIXME: Currently not being used due to lack of api capability. */}
         {isLoggedIn ? (
           <div className='header__user'>
             <p className='user__username'>{username}</p>

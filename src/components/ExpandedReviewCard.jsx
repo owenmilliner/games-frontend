@@ -90,12 +90,13 @@ const ExpandedReviewCard = ({
       </div>
       {isCommenting ? (
         <form className='newComment' onSubmit={handleCommentSubmit}>
-          <input
+          <textarea
             type='text'
             id='comment'
             className='newComment__body'
             value={commentBody}
             onChange={handleCommentChange}
+            required
           />
           <button type='submit' className='newComment_button'>
             post
