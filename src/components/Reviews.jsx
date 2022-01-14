@@ -11,9 +11,7 @@ const Reviews = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [sortValue, setSortValue] = useState('created_at');
   const [sortingOrder, setSortingOrder] = useState('desc');
-  // May not be the best way to do this, but I think it makes more sense to reload the data, especially if the review which has been posted is not in the current sorting/filtering criteria. In addition to this, the review-photo does not load straight away, unless the page is re-rendered.
   const [reviewPosted, setReviewPosted] = useState(false);
-  // FIXME: THIS IS A TEST FOR THE INFINITE SCROLL
   const [totalReviewCount, setTotalReviewCount] = useState(0);
   // const [isMoreData, setIsMoreData] = useState(true);
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
