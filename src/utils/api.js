@@ -63,3 +63,9 @@ export const postCommentByReviewId = (review_id, comment) => {
     .post(`/reviews/${review_id}/comments`, comment)
     .then((response) => response.data.comment);
 };
+
+export const postReview = (review) => {
+  return gamesApi
+    .post('/reviews', review)
+    .then((response) => response.data.review);
+};

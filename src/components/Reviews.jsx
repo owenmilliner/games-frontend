@@ -11,6 +11,8 @@ const Reviews = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [sortValue, setSortValue] = useState('created_at');
   const [sortingOrder, setSortingOrder] = useState('desc');
+  // May not be the best way to do this, but I think it makes more sense to reload the data, especially if the review which has been posted is not in the current sorting/filtering criteria. In addition to this, the review-photo does not load straight away, unless the page is re-rendered.
+  const [reviewPosted, setReviewPosted] = useState(false);
 
   useEffect(() => {
     getReviews({
@@ -20,8 +22,9 @@ const Reviews = () => {
     }).then((result) => {
       setReviewsData(result);
       setIsLoading(false);
+      setReviewPosted(false);
     });
-  }, [categoryFilter, sortingOrder, sortValue]);
+  }, [categoryFilter, sortingOrder, sortValue, reviewPosted]);
 
   return (
     <div>
@@ -40,7 +43,11 @@ const Reviews = () => {
               sortingOrder={sortingOrder}
               setSortingOrder={setSortingOrder}
             />
-            <PostReview />
+            <PostReview
+              reviewsData={reviewsData}
+              setReviewsData={setReviewsData}
+              setReviewPosted={setReviewPosted}
+            />
           </div>
           <ul className='reviews__list'>
             {reviewsData.map((review) => (
