@@ -386,18 +386,24 @@ button {
   border-radius: 8px;
   display: grid;
   grid-template-areas:
-    'info info info info info info'
+    'info info info info info delete'
     'title title title title title title'
     'body body body body body body'
     'voteButton voteCounter commentButton commentCounter fill newComment';
   grid-template-rows: 20px 40px auto 20px;
-  grid-template-columns: 60px 40px 80px 40px auto;
+  grid-template-columns: 60px 40px 80px 40px auto 60px;
   overflow: hidden;
 }
 
 .expandedReviewCard__info {
   margin-top: 0px;
   grid-area: info;
+}
+
+.expandedReviewCard__delete {
+  margin-top: 0px;
+  grid-area: delete;
+  background-color: #a44a3f;
 }
 
 .expandedReviewCard__title {

@@ -11,8 +11,10 @@ const ExpandedReview = () => {
   const [reviewError, setReviewError] = useState({});
   const [singleReviewData, setSingleReviewData] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
+  const [reviewDeletion, setReviewDeletion] = useState(false);
 
   useEffect(() => {
+    setReviewDeletion(false);
     getReviewById(review_id)
       .then((result) => {
         setSingleReviewData(result);
@@ -25,7 +27,7 @@ const ExpandedReview = () => {
         });
         setIsError(true);
       });
-  }, [review_id]);
+  }, [review_id, reviewDeletion]);
 
   return (
     <div>
@@ -45,6 +47,7 @@ const ExpandedReview = () => {
             singleReviewData={singleReviewData}
             commentsData={commentsData}
             setCommentsData={setCommentsData}
+            setReviewDeletion={setReviewDeletion}
           />
           <Comments
             commentsData={commentsData}

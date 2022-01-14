@@ -1,6 +1,7 @@
 import { useVotes } from '../hooks/useVotes';
 import { CommentContext } from '../contexts/CommentContext';
 import { UserContext } from '../contexts/UserContext';
+import { useReviewDeletion } from '../hooks/useReviewDeletion';
 import { useContext, useState } from 'react';
 import { postCommentByReviewId } from '../utils/api';
 
@@ -8,25 +9,31 @@ const ExpandedReviewCard = ({
   singleReviewData,
   commentsData,
   setCommentsData,
+  setReviewDeletion,
 }) => {
   const { votes, handleVotes, voted } = useVotes(
     singleReviewData.votes,
     'review',
     singleReviewData.review_id
   );
+
+  const { handleSingleReviewDeletion } = useReviewDeletion(
+    singleReviewData,
+    undefined,
+    undefined,
+    setReviewDeletion
+  );
+
   const { commentReference } = useContext(CommentContext);
   const { isLoggedIn, username } = useContext(UserContext);
-
   const [isCommenting, setIsCommenting] = useState(false);
   const [commentBody, setCommentBody] = useState('');
 
   const handleCommentsScroll = () => commentReference.current.scrollIntoView();
-
   const handleNewComment = () => {
     setIsCommenting(!isCommenting);
     setCommentBody('');
   };
-
   const handleCommentSubmit = (event) => {
     event.preventDefault();
     postCommentByReviewId(singleReviewData.review_id, {
@@ -49,6 +56,14 @@ const ExpandedReviewCard = ({
           <strong>{singleReviewData.owner}</strong> on{' '}
           <strong>{singleReviewData.created_at.slice(0, 10)}</strong>
         </p>
+        {username === singleReviewData.owner ? (
+          <button
+            className='expandedReviewCard__delete'
+            onClick={handleSingleReviewDeletion}
+          >
+            delete
+          </button>
+        ) : null}
         <h2 className='expandedReviewCard__title'>{singleReviewData.title}</h2>
         <p className='expandedReviewCard__body'>
           {singleReviewData.review_body}
