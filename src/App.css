@@ -86,8 +86,17 @@ html {
   grid-area: three;
 }
 
-.login__input {
+.login__input--status-default {
   width: 100px;
+}
+
+.login__input--status-failed {
+  width: 100px;
+  border-color: #e5625e;
+}
+
+.login__input--status-failed::placeholder {
+  color: #e5625e;
 }
 
 .login__text {

@@ -7,7 +7,7 @@ const Header = () => {
   const [usernameSearchTerm, setUsernameSearchTerm] = useState('');
   const { isLoggedIn, handleLogin, handleLogout } =
     useLogin(usernameSearchTerm);
-  const { username } = useContext(UserContext);
+  const { username, loginFailure } = useContext(UserContext);
 
   const handleLoginForm = (event) => {
     event.preventDefault();
@@ -56,9 +56,13 @@ const Header = () => {
           <form className='header__login' onSubmit={handleLoginForm}>
             <input
               type='text'
-              placeholder='Username'
+              placeholder={loginFailure ? 'Invalid username' : 'Username'}
               id='username'
-              className='login__input'
+              className={
+                loginFailure
+                  ? 'login__input--status-failed'
+                  : 'login__input--status-default'
+              }
               value={usernameSearchTerm}
               onChange={handleUsernameChange}
             ></input>

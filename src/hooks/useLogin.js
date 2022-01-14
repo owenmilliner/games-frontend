@@ -3,7 +3,8 @@ import { useState, useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 
 export const useLogin = (usernameInput) => {
-  const { setUsername, isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { setUsername, isLoggedIn, setIsLoggedIn, setLoginFailure } =
+    useContext(UserContext);
 
   const handleLogin = () => {
     getUsers()
@@ -12,6 +13,8 @@ export const useLogin = (usernameInput) => {
           if (user.username === usernameInput) {
             setIsLoggedIn(true);
             setUsername(usernameInput);
+          } else {
+            setLoginFailure(true);
           }
         });
       })
@@ -20,6 +23,7 @@ export const useLogin = (usernameInput) => {
 
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to logout?')) {
+      setLoginFailure(false);
       setIsLoggedIn(false);
       setUsername('');
     }
