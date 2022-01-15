@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Reviews from './components/Reviews';
 import ExpandedReview from './components/ExpandedReview';
-import Login from './components/Login';
 import NotFound from './components/NotFound';
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Navigate to='/reviews' />}></Route>
           <Route path='/reviews' element={<Reviews />}></Route>
-          <Route path='/login' element={<Login />}></Route>
           <Route
             path='/reviews/:review_id'
             element={<ExpandedReview />}

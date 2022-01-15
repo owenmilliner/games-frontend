@@ -9,6 +9,7 @@ export const useLogin = (usernameInput) => {
   const handleLogin = () => {
     getUsers()
       .then((usersArray) => {
+        console.log(usersArray);
         usersArray.forEach((user) => {
           if (user.username === usernameInput) {
             setIsLoggedIn(true);

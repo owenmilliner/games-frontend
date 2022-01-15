@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Welcome to my Board Game Reviews app!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    Owen Milliner (15.01.2021)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This app was created as a visual front end interface for the application of the API endpoints I had created previously.
 
-### `npm start`
+## To run this app, use the command: `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Using this App
 
-### `npm test`
+### User Logins
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app has a number of features available, most require you to be logged in as a user (using the input field in the top-right corner).
 
-### `npm run build`
+The available usernames are as follows:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- tickle112
+- grumpy19
+- happyamy2016
+- cooljmessy
+- weegembump
+- jessjelly
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### User Stories (functionality added)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Achieving a realistic user experience for this practice web app was a fundamental aspect of recreating a usable real-life application.
 
-### `npm run eject`
+The available user stories are as follows:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- View a list of all reviews.
+- View a filtered list of reviews based upon a selected category.
+- View an individual review (with extra information shown).
+- View an individual review's comments.
+- Sort the list of reviews by (in both Ascending and Descending):
+  - Date
+  - Title
+  - User
+  - Category
+  - Votes
+- Log into a user account.
+- Log out of a user account.
+- Delete comment (when logged in as the comment's user).
+- Delete review (when logged in as the review's user).
+- Post a new review (When logged in as a user).
+- Post a new comment to a review.
+- Vote on a review.
+- Remove my vote from a review.
+- Vote on a comment.
+- Remove my vote from a comment.
+- See appropriate feedback when:
+  - Loading/Waiting for page contents.
+  - Instant update on review post.
+  - Instant update on review deletion.
+  - Instant update on comment post.
+  - Instant update on comment deletion.
+  - Noticeable change when a comment vote has been recorded.
+- See an appropriate error when:
+  - Trying to access an invalid route (e.g. /pineapples).
+  - Trying to access an invalid review page (e.g. id='bananas')
+  - Trying to access an non-existent review page (e.g. id='758492378')
+  - Invalid username on login.
+  - Incomplete form submission (comments/reviews).
