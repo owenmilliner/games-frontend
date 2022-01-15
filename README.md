@@ -6,6 +6,10 @@
 
 This app was created as a visual front end interface for the application of the API endpoints I had created previously.
 
+The web app can be found hosted by heroku at:
+
+https://games-frontend.herokuapp.com/reviews
+
 ## To run this app, use the command: `npm start`
 
 Runs the app in the development mode.\
